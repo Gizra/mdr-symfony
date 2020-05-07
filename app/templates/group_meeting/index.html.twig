@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Group meetings{% endblock %}
+
+{% block body %}
+
+<div class="app-page">
+  <h1>Group Meetings</h1>
+
+  <ol class="group-meetings app-list">
+
+    {% for group_meeting in group_meetings %}
+      <li>
+        <a class="item" href="{{ path('group_meeting', {id: group_meeting.id}) }}">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <div class="item-name">
+              {{ group_meeting.name  }} ({{ group_meeting.date | date("F jS \\a\\t g:ia") }})
+            </div>
+        </a>
+      </li>
+    {% endfor %}
+
+  </ol>
+
+{#    <details>#}
+{#        {{ dump(group_meetings[0]) }}#}
+{#    </details>#}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Group meeting{% endblock %}
+
+{% block body %}
+
+<div class="app-page">
+    <div class="app-navigation">
+      <a class="pure-button item" href="/">
+          <i class="fa fa-home" aria-hidden="true"></i>Home
+      </a>
+
+      <a class="pure-button item" href="{{ path('group_meetings') }}">
+        <i class="fa fa-reply" aria-hidden="true"></i>Back to group meetings
+      </a>
+    </div>
+
+    <h1>Group meeting: {{ group_meeting.name }} ({{ group_meeting.date | date("F jS \\a\\t g:ia") }})</h1>
+
+    <ol class="app-list">
+        {% for group_meeting_attendance in children_group_meeting_attendances %}
+
+            <li>
+                <div class="item-name">
+                    {{ group_meeting_attendance.person.firstName }} {{ group_meeting_attendance.person.lastName }} (Child)
+                </div>
+
+                <a class="item" href="{{ path( 'child_measurements_weight', {groupMeetingAttendance: group_meeting_attendance.id}) }}">
+                    Weight
+                </a>,
+                <a class="item" href="{{ path( 'child_measurements_photo', {groupMeetingAttendance: group_meeting_attendance.id}) }}">
+                    Photo
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+
+</div>
+{% endblock %}

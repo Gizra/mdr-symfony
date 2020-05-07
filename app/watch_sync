@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Exit if we encounter a problem
+set -e
+
+while true;
+do
+    date
+    # For easier debug, for now we defer photos download.
+    php bin/console sync:download defer_photos_download
+    php bin/console sync:upload
+    sleep 5
+done

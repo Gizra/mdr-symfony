@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mother{% endblock %}
+
+{% block body %}
+
+<div class="app-page">
+
+    <div class="app-navigation">
+      <a class="pure-button item" href="/">
+          <i class="fa fa-home" aria-hidden="true"></i>Home
+      </a>
+
+      <a class="pure-button item" href="{{ path('group_meeting', {id: group_meeting_attendance.groupMeeting.id}) }}">
+        <i class="fa fa-reply" aria-hidden="true"></i>Back to group meeting {{  group_meeting_attendance.groupMeeting.name }}
+      </a>
+
+    </div>
+
+    <h1>
+        {{ group_meeting_attendance.mother.firstName }} {{ group_meeting_attendance.mother.lastName }}
+    </h1>
+
+    <ol class="fa-ul children app-list">
+        {% for child in children %}
+            <li>
+{#                {{ path('child', {groupMeetingFileId: group_meeting.fileId, fileId: childIdentifier.fileId}) }}#}
+                <a class="item" href="">
+                    <i class="fa fa-child" aria-hidden="true"></i>
+                    <div class="item-name">
+                      {{ child.firstName }} {{ child.lastName }}
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ol>
+
+{#    <details>#}
+{#        {{ dump(mother) }}#}
+{#    </details>#}
+
+
+</div>
+{% endblock %}

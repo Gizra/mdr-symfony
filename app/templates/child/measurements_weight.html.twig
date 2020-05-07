@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Child{% endblock %}
+
+{% block body %}
+
+<div class="app-page">
+  <div class="app-navigation">
+    <a class="pure-button item" href="/">
+        <i class="fa fa-home" aria-hidden="true"></i>Home
+    </a>
+    <a class="pure-button item" href="{{ path('group_meeting', { id: measurements.getGroupMeetingAttendance().getGroupMeeting().id }) }}">
+        <i class="fa fa-reply" aria-hidden="true"></i>Back to Group meeting
+    </a>
+  </div>
+
+  <h1>
+
+    {{ child.firstName }} {{ child.lastName }}
+
+  </h1>
+
+  <section class="edit measurements">
+
+    {% if has_existing_measurements %}
+
+      <h3>Edit Existing Measurements - Weight</h3>
+
+    {% else %}
+
+      <h3>Add New Measurements - Weight</h3>
+
+    {% endif %}
+
+    <div class="app-form">
+      {% form_theme form 'forms/form-rows.html.twig' %}
+
+      {{ form_start(form, {'attr': {'class': 'pure-form pure-form-stacked'}}) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.value) }}
+
+      {{ form_end(form) }}
+
+    </div>
+  </section>
+</div>
+
+{% endblock %}
