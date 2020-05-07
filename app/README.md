@@ -12,7 +12,7 @@ Navigate to http://localhost:8080
 
 ## Install for Local Dev
 
-    composer install
+    ddev composer install
     yarn install
 
 ## Install on Termux
