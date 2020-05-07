@@ -25,8 +25,8 @@ First install [Termux](https://termux.com/), start it and enter the following co
     pkg install sqlite
 
     # Clone repo
-    git clone git@github.com:Gizra/ihangane.git
-    cd ihangane/symfony-client
+    git clone git@github.com:Gizra/mdr-symfony.git
+    cd mdr-symfony/app
 
     # Download composer, as per instructions from https://getcomposer.org/download/
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -80,13 +80,22 @@ On host:
  
     rsync -arv -zz -e 'ssh -p 11394' --progress ./public/uploads/child/photos 0.tcp.ngrok.io:~/ihangane/symfony-client/public/uploads/child/photos
     rsync -arv -zz -e 'ssh -p 11394' --progress ./var/data-*.db 0.tcp.ngrok.io:~/ihangane/symfony-client/var
+
+## SSH to Remote Termux
+
+Assuming device is connected on same Wifi (otherwise, connection should be done
+with ngrok).
+
+Find IP with `ifconfig`
+
+    ssh <username>@<IP address> -p 8022
     
 ## Remote browsing
 
 After running the PHP server on the device, we can use our Browser (e.g. Chrome or Firefox)
 on the host computer to view the site.
 
-    ssh -L 8080:127.0.0.1:8080 -C -N -l <username> 10.<IP address>.0.4 -p 8022
+    ssh -L 8080:127.0.0.1:8080 -C -N -l <username> <IP address> -p 8022
     
 for example:
 
