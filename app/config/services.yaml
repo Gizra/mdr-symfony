@@ -12,6 +12,10 @@ parameters:
         # Make configurable.
         db_version: 6
 
+doctrine:
+    dbal:
+        # Append IHANGANE_AUTHORITY_UUID to the DB name.
+        url: 'sqlite:///%kernel.project_dir%/var/data-%env(IHANGANE_AUTHORITY_UUID)%.db'
 
 services:
     # default configuration for services in *this* file
